@@ -1,0 +1,10 @@
+/* Minimal component styles — Tailwind handles most styling */
+
+:host {
+  display: block;
+}
+
+/* Ensure the absolute logo sits above other content on small screens */
+img[alt="Vovó Crochê"] {
+  z-index: 40;
+}
