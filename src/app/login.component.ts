@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +11,25 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
   email = '';
   password = '';
   showPassword = false;
+
+  constructor(private router: Router) {}
 
   toggleShow() {
     this.showPassword = !this.showPassword;
   }
 
   submit() {
-    // Placeholder — integrate with your auth service
+    if (!this.email || !this.password) {
+      alert('Preencha email e senha');
+      return;
+    }
+
     console.log('login', { email: this.email, password: this.password });
-    alert('Login submitted (demo)');
+
+    this.router.navigate(['/home']);
   }
 }
