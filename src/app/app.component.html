@@ -1,10 +1,40 @@
 <body>
     <div class="page">
-        <header class="vc-header">
+        <header class="vc-header" [class.hide-header]="hideHeader" [class.header-bg]="headerBackground">
+            <div class="menu-overlay" [class.active]="menuOpen" (click)="closeMenu()"></div>
+
+            <aside class="side-menu" [class.open]="menuOpen">
+                <div class="menu-header">
+                    <button class="close-btn" (click)="closeMenu()">✕</button>
+                </div>
+
+                <ul class="menu-items">
+                    <li>NOVIDADES <span>•</span></li>
+                    <li>ROUPAS <span>•</span></li>
+                    <li>ACESSÓRIOS <span>•</span></li>
+                    <li>ESTILOS <span>•</span></li>
+                    <li>FAVORITOS <span>•</span></li>
+                </ul>
+
+                <div class="menu-footer">
+                    <div>
+                        <p>Entrega</p>
+                        <p>Devolução e Troca</p>
+                        <p>Receber Novidades</p>
+                    </div>
+
+                    <div>
+                        <p>Instagram</p>
+                        <p>Facebook</p>
+                        <p>Encomendar</p>
+                    </div>
+                </div>
+            </aside>
+
             <div class="vc-header-inner">
                 <div class="vc-left">
                     <img src="assets/logo.svg" alt="Vovó Crochê" class="vc-logo" />
-                    <button class="icon-btn menu-btn">
+                    <button class="icon-btn menu-btn" (click)="openMenu()">
                         <img src="assets/menu_hamburguer.svg" alt="menu" />
                     </button>
                     <nav class="vc-nav">
@@ -19,6 +49,9 @@
                     </button>
                     <button class="icon-btn cart-btn">
                         <img src="assets/sacola.svg" alt="sacola" />
+                        <span class="cart-badge" *ngIf="cartCount > 0">
+                            {{ cartCount }}
+                        </span>
                     </button>
                     <button class="icon-btn profile-btn">
                         <img src="assets/profile.svg" alt="perfil" />
@@ -47,11 +80,171 @@
                          alt="Bolsa laranja feita à mão" 
                          class="bag-img" />
                 </section>
+                <!-- ================= DESTAQUE ================= -->
             </div>
         </main>
+        <footer class="footer" [class.hide-footer]="menuOpen">
+            <div class="footer-keywords marquee" #marqueeRef>
+                <span>crochê</span>
+                <span class="separator">*</span>
+                <span>netinho</span>
+                <span class="separator">*</span>
+                <span>café</span>
+                <span class="separator">*</span>
+                <span>amor</span>
+                <span class="separator">*</span>
+                <span>bolo</span>
+                <span class="separator">*</span>
+                <span>beijo</span>
+                <span class="separator">*</span>
+                <span>carinho</span>
+            </div>
+        </footer>
+        <section class="destaque" id="destaque">
 
-        <footer class="footer">
-            <div class="footer-keywords">
+            <div class="destaque-header">
+                <div>
+                    <h2>Destaque</h2>
+                    <a class="ver-todos">ver todos</a>
+                </div>
+            </div>
+
+            <div class="products">
+
+                <!-- Produto 1 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(0)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_amarela.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 0">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                        <span class="hint">Clique duas vezes para favoritar</span>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha amarela</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+
+
+                <!-- Produto 2 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(1)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_azul.svg" />
+
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 1">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha azul</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+
+
+                <!-- Produto 3 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(2)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_laranja_alca.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 2">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha laranja</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <footer class="footer" [class.hide-footer]="menuOpen">
+            <div class="footer-keywords marquee" #marqueeRef>
+                <span>crochê</span>
+                <span class="separator">*</span>
+                <span>netinho</span>
+                <span class="separator">*</span>
+                <span>café</span>
+                <span class="separator">*</span>
+                <span>amor</span>
+                <span class="separator">*</span>
+                <span>bolo</span>
+                <span class="separator">*</span>
+                <span>beijo</span>
+                <span class="separator">*</span>
+                <span>carinho</span>
+            </div>
+        </footer>
+        <!-- ================= NOVIDADES ================= -->
+        <section class="novidades">
+
+            <div class="novidades-inner">
+
+                <!-- IMAGEM -->
+                <section class="novidades-image">
+                    <div class="shape-bg">
+                        <img src="assets/element_green.svg" alt="fundo decorativo">
+                    </div>
+
+                    <img src="assets/bolsa_verde.svg"
+                        alt="Bolsa verde feita à mão"
+                        class="bag-img">
+                </section>
+
+                <!-- TEXTO -->
+                <section class="novidades-text">
+                    <h1 class="novidades-title">NOVIDADES</h1>
+
+                    <h2 class="product-name">BOLSA VERDE SERENA</h2>
+
+                    <p class="product-price">R$ 79<span class="cents">.99</span> </p>
+
+                    <p class="product-description">
+                        Feita com fios delicados e cuidadosamente trançados, encanta pelo seu tom verde sereno que transmite frescor e harmonia.
+                        Cada ponto revela o trabalho manual e o tempo dedicado à sua criação, resultando em um acessório leve, durável e cheio de personalidade.
+                    </p>
+
+                    <button class="cta-dark">
+                        COMPRAR AGORA <span>→</span>
+                    </button>
+                </section>
+
+            </div>
+        </section>
+        <footer class="footer" [class.hide-footer]="menuOpen">
+            <div class="footer-keywords marquee" #marqueeRef>
                 <span>crochê</span>
                 <span class="separator">*</span>
                 <span>netinho</span>
