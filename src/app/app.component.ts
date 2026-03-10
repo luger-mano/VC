@@ -12,6 +12,24 @@ import { HostListener } from '@angular/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements AfterViewInit{
+
+  searchOpen = false;
+
+  constructor(private elementRef: ElementRef) {}
+
+  toggleSearch() {
+    this.searchOpen = !this.searchOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    const searchContainer = this.elementRef.nativeElement.querySelector('.search-container');
+
+    if (searchContainer && !searchContainer.contains(event.target)) {
+      this.searchOpen = false;
+    }
+  }
+
   hideHeader = false;
   headerBackground = false;
   lastScrollY = 0;
