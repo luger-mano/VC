@@ -44,14 +44,21 @@
                     </nav>
                 </div>
                 <div class="vc-right">
-                    <button class="icon-btn search-btn">
-                        <img src="assets/Buscar.svg" alt="buscar" />
-                    </button>
+                    <div class="search-container" [class.open]="searchOpen">
+
+                        <button class="icon-btn search-btn" (click)="toggleSearch()">
+                            <img src="assets/Buscar.svg" alt="buscar" />
+                        </button>
+
+                        <input 
+                            type="text"
+                            placeholder="Pesquisar"
+                            class="search-input"
+                        />
+
+                    </div>
                     <button class="icon-btn cart-btn">
                         <img src="assets/sacola.svg" alt="sacola" />
-                        <span class="cart-badge" *ngIf="cartCount > 0">
-                            {{ cartCount }}
-                        </span>
                     </button>
                     <button class="icon-btn profile-btn">
                         <img src="assets/profile.svg" alt="perfil" />
@@ -243,6 +250,94 @@
 
             </div>
         </section>
+        <section class="destaque" id="destaque">
+
+            <div class="destaque-header">
+                <div>
+                    <a class="ver-todos">todas as novidades</a>
+                </div>
+            </div>
+
+            <div class="products">
+
+                <!-- Produto 1 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(2)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_verde_escuro.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 2">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                        <span class="hint">Clique duas vezes para favoritar</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha laranja</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(0)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_roxa.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 0">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha amarela</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+                <!-- Produto 3 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(1)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_vermelha.svg" />
+
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 1">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha azul</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+                
+
+            </div>
+        </section>
         <footer class="footer" [class.hide-footer]="menuOpen">
             <div class="footer-keywords marquee" #marqueeRef>
                 <span>crochê</span>
@@ -260,5 +355,38 @@
                 <span>carinho</span>
             </div>
         </footer>
+        <section class="sustentavel" id="sobre">
+
+            <img 
+                src="assets/background-image-nature.svg"
+                alt="nature background"
+                class="sustentavel-bg"
+            />
+
+            <div class="sustentavel-overlay">
+
+                <h1 class="sustentavel-title">
+                    SUSTENTÁVEL
+                </h1>
+
+                <div class="sustentavel-card">
+
+                    <p>
+                        Cada criação carrega uma história única de quem faz,
+                        de quem usa e do mundo que todos queremos preservar.
+                        Produzir com intenção é resistir ao consumo rápido,
+                        é escolher qualidade em vez de quantidade,
+                        é tecer um estilo de vida mais leve e responsável.
+                    </p>
+
+                    <a class="sustentavel-link">
+                        sobre nós ↗
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+        
     </div>
 </body>
