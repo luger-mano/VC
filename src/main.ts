@@ -3,15 +3,22 @@ import { provideRouter } from '@angular/router';
 import { LoginComponent } from './app/login.component';
 import { SignupComponent } from './app/signup.component';
 import { AppComponent } from './app/app.component';
+import { ReceberNovidadesComponent } from './app/receber-novidades.component';
+import { AppLayoutComponent } from './app/app-layout.component';
+import { ProductDetailComponent } from './app/product-detail.component';
 
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(AppLayoutComponent, {
   providers: [
     provideRouter([
       { path: '', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'home', component: AppComponent },
+      { path: 'novidades', component: ReceberNovidadesComponent },
+      { path: 'receber-novidades', component: ReceberNovidadesComponent },
+      { path: 'produto/:id', component: ProductDetailComponent },
       { path: '**', redirectTo: '' }
+      
     ])
   ]
 })
