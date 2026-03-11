@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { Product } from './products';
 
 
 @Component({
@@ -11,11 +12,13 @@ import { HostListener } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements AfterViewInit{
 
+
+export class AppComponent implements AfterViewInit{
+  
   searchOpen = false;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private router: Router) {}
 
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
@@ -71,6 +74,14 @@ export class AppComponent implements AfterViewInit{
     document.body.style.overflow = 'auto';
   }
 
+  goToNovidades() {
+    this.router.navigate(['/novidades']);
+  }
+
+  goToProduct(productId: number) {
+    this.router.navigate(['/produto', productId]);
+  }
+
   likedIndex: number | null = null;
 
   likeProduct(index: number) {
@@ -82,6 +93,28 @@ export class AppComponent implements AfterViewInit{
   }
   cartCount = 0;
 
+
+  clickTimeout: any;
+
+  handleClick(product: Product) {
+    this.clickTimeout = setTimeout(() => {
+      this.openProduct(product);
+    }, 200);
+  }
+
+  toggleFavorite(product: Product, event: Event) {
+    event.stopPropagation();
+
+    if (this.clickTimeout) {
+      clearTimeout(this.clickTimeout);
+    }
+
+    product.favorite = !product.favorite;
+  }
+
+  openProduct(product: Product) {
+    this.router.navigate(['/product', product.id]);
+  }
   addToCart() {
     this.cartCount++;
   }
@@ -109,7 +142,9 @@ export class AppComponent implements AfterViewInit{
     };
 
     animate();
-  });
 
+    
+  });
+  
 }
 }

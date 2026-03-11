@@ -9,7 +9,7 @@
                 </div>
 
                 <ul class="menu-items">
-                    <li>NOVIDADES <span>•</span></li>
+                    <li (click)="goToNovidades(); closeMenu()">NOVIDADES <span>•</span></li>
                     <li>ROUPAS <span>•</span></li>
                     <li>ACESSÓRIOS <span>•</span></li>
                     <li>ESTILOS <span>•</span></li>
@@ -20,7 +20,7 @@
                     <div>
                         <p>Entrega</p>
                         <p>Devolução e Troca</p>
-                        <p>Receber Novidades</p>
+                        <p (click)="goToNovidades(); closeMenu()">Receber Novidades</p>
                     </div>
 
                     <div>
@@ -120,7 +120,8 @@
 
                 <!-- Produto 1 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(0)">
+                    (dblclick)="likeProduct(0)"
+                    (click)="goToProduct(1)">
 
                     <div class="product-image">
 
@@ -147,7 +148,8 @@
 
                 <!-- Produto 2 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(1)">
+                    (dblclick)="likeProduct(1)"
+                    (click)="goToProduct(2)">
 
                     <div class="product-image">
 
@@ -173,11 +175,37 @@
 
                 <!-- Produto 3 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(2)">
+                    (dblclick)="likeProduct(2)"
+                    (click)="goToProduct(3)">
+                    
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_laranja_alca.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 2">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha laranja</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+                <!-- Produto 4 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(3)"
+                    (click)="goToProduct(5)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_verde.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
                         <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
@@ -262,7 +290,8 @@
 
                 <!-- Produto 1 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(2)">
+                    (click)="goToProduct(6)"
+                    (dblclick)="likeProduct(3)">
 
                     <div class="product-image">
 
@@ -287,7 +316,8 @@
 
                 <!-- Produto 2 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(0)">
+                    (dblclick)="likeProduct(0)"
+                    (click)="goToProduct(4)">
 
                     <div class="product-image">
 
@@ -312,7 +342,8 @@
                 </div>
                 <!-- Produto 3 -->
                 <div class="product-card"
-                    (dblclick)="likeProduct(1)">
+                    (dblclick)="likeProduct(2)"
+                    (click)="goToProduct(7)">
 
                     <div class="product-image">
 
@@ -322,7 +353,7 @@
                         <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
                         <div class="heart"
-                            [class.show]="likedIndex === 1">
+                            [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -330,6 +361,30 @@
 
                     <div class="product-info">
                         <h3>Bolsinha azul</h3>
+                        <p class="category">Franjinha</p>
+                        <p class="price">R$ 64<span class="cents">.99</span></p>
+                    </div>
+                </div>
+                <!-- Produto 4 -->
+                <div class="product-card"
+                    (dblclick)="likeProduct(2)"
+                    (click)="goToProduct(5)">
+
+                    <div class="product-image">
+
+                        <img src="assets/bolsa_verde.svg" />
+                        <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+                        <img src="assets/add_product.svg" alt="Adicionar">
+                        </button>
+                        <div class="heart"
+                            [class.show]="likedIndex === 2">
+                            <img src="assets/heart.svg" alt="coração">
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Bolsinha laranja</h3>
                         <p class="category">Franjinha</p>
                         <p class="price">R$ 64<span class="cents">.99</span></p>
                     </div>
@@ -394,7 +449,7 @@
                 <div class="footer-col">
                     <h4>COMPRAR</h4>
                     <a>Destacados</a>
-                    <a>Novidades</a>
+                    <a routerLink="/receber-novidades">Novidades</a>
                     <a>Encomendar</a>
                 </div>
 
@@ -402,13 +457,12 @@
                     <h4>AJUDA</h4>
                     <a>Entrega</a>
                     <a>Devolução e Troca</a>
-                    <a>Receber Novidades</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>REDE</h4>
-                    <a>Instagram</a>
-                    <a>Facebook</a>
+                    <a href="https://www.instagram.com/vovocrochet/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/ednea.correia" target="_blank" rel="noopener noreferrer">Facebook</a>
                 </div>
 
             </div>
