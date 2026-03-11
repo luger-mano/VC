@@ -1,0 +1,130 @@
+<body>
+  <div class="page">
+    <header class="vc-header" [class.hide-header]="hideHeader" [class.header-bg]="headerBackground">
+      <div class="menu-overlay" [class.active]="menuOpen" (click)="closeMenu()"></div>
+
+      <aside class="side-menu" [class.open]="menuOpen">
+        <div class="menu-header">
+          <button class="close-btn" (click)="closeMenu()">✕</button>
+        </div>
+
+        <ul class="menu-items">
+          <li>NOVIDADES <span>•</span></li>
+          <li>ROUPAS <span>•</span></li>
+          <li>ACESSÓRIOS <span>•</span></li>
+          <li>ESTILOS <span>•</span></li>
+          <li>FAVORITOS <span>•</span></li>
+        </ul>
+
+        <div class="menu-footer">
+          <div>
+            <p>Entrega</p>
+            <p>Devolução e Troca</p>
+            <p>Receber Novidades</p>
+          </div>
+
+          <div>
+            <p>Instagram</p>
+            <p>Facebook</p>
+            <p>Encomendar</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="vc-header-inner">
+        <div class="vc-left">
+          <img src="assets/logo.svg" alt="Vovó Crochê" class="vc-logo" (click)="goHome()" />
+          <button class="icon-btn menu-btn" (click)="openMenu()">
+            <img src="assets/menu_hamburguer.svg" alt="menu" />
+          </button>
+          <nav class="vc-nav">
+            <a href="#" (click)="goHome(); $event.preventDefault()">Destaque</a>
+            <a href="#">Encomendar</a>
+            <a href="#">Sobre Nós</a>
+          </nav>
+        </div>
+        <div class="vc-right">
+          <div class="search-container" [class.open]="searchOpen">
+            <button class="icon-btn search-btn" (click)="toggleSearch()">
+              <img src="assets/Buscar.svg" alt="buscar" />
+            </button>
+            <input 
+              type="text"
+              placeholder="Pesquisar"
+              class="search-input"
+            />
+          </div>
+          <button class="icon-btn cart-btn">
+            <img src="assets/sacola.svg" alt="sacola" />
+          </button>
+          <button class="icon-btn profile-btn">
+            <img src="assets/profile.svg" alt="perfil" />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="landing receber-novidades-main">
+      <div class="landing-inner">
+        <section class="novidades-section">
+          <div class="novidades-content">
+            <div class="headline-row">
+
+                <h1 class="title">RECEBER</h1>
+
+                    <div class="image-container">
+                        <img src="assets/bolsa_vinho.svg" alt="Bolsa vinho" class="bag-image" />
+                    </div>
+
+                <h2 class="subtitle">NOVIDADES</h2>
+
+            </div>
+            
+            <p class="description">
+              Seja o primeiro a conhecer nossas criações mais recentes. 
+              Inscreva-se para receber novidades exclusivas, dicas de estilo 
+              e promoções direto na sua caixa de entrada.
+            </p>
+
+            <form class="newsletter-form" (ngSubmit)="submitNewsletter($event)">
+              <div class="input-group">
+                <input 
+                  type="email" 
+                  placeholder="Seu e-mail" 
+                  required
+                  class="email-input"
+                />
+                <button type="submit" class="subscribe-btn">
+                  INSCREVER <span class="arrow">→</span>
+                </button>
+              </div>
+            </form>
+
+            <p class="terms">
+              Você receberá atualizações de novos produtos, tendências e ofertas exclusivas. 
+              Pode cancelar sua inscrição a qualquer momento.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" [class.hide-footer]="menuOpen">
+      <div class="footer-keywords marquee" #marqueeRef>
+        <span>crochê</span>
+        <span class="separator">*</span>
+        <span>netinho</span>
+        <span class="separator">*</span>
+        <span>café</span>
+        <span class="separator">*</span>
+        <span>amor</span>
+        <span class="separator">*</span>
+        <span>bolo</span>
+        <span class="separator">*</span>
+        <span>beijo</span>
+        <span class="separator">*</span>
+        <span>carinho</span>
+      </div>
+    </footer>
+  </div>
+</body>
