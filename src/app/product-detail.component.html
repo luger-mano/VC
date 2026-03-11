@@ -1,0 +1,149 @@
+<body>
+  <div class="page">
+    <header class="vc-header" [class.hide-header]="hideHeader" [class.header-bg]="headerBackground">
+      <div class="menu-overlay" [class.active]="menuOpen" (click)="closeMenu()"></div>
+
+      <aside class="side-menu" [class.open]="menuOpen">
+        <div class="menu-header">
+          <button class="close-btn" (click)="closeMenu()">✕</button>
+        </div>
+
+        <ul class="menu-items">
+          <li (click)="goToNovidades(); closeMenu()">NOVIDADES <span>•</span></li>
+          <li>ROUPAS <span>•</span></li>
+          <li>ACESSÓRIOS <span>•</span></li>
+          <li>ESTILOS <span>•</span></li>
+          <li>FAVORITOS <span>•</span></li>
+        </ul>
+
+        <div class="menu-footer">
+          <div>
+            <p>Entrega</p>
+            <p>Devolução e Troca</p>
+            <p (click)="goToNovidades(); closeMenu()">Receber Novidades</p>
+          </div>
+
+          <div>
+            <p>Instagram</p>
+            <p>Facebook</p>
+            <p>Encomendar</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="vc-header-inner">
+        <div class="vc-left">
+          <img src="assets/logo.svg" alt="Vovó Crochê" class="vc-logo" (click)="goHome()" />
+          <button class="icon-btn menu-btn" (click)="openMenu()">
+            <img src="assets/menu_hamburguer.svg" alt="menu" />
+          </button>
+          <nav class="vc-nav">
+            <a href="#" (click)="goHome(); $event.preventDefault()">Destaque</a>
+            <a href="#">Encomendar</a>
+            <a href="#">Sobre Nós</a>
+          </nav>
+        </div>
+        <div class="vc-right">
+          <div class="search-container" [class.open]="searchOpen">
+            <button class="icon-btn search-btn" (click)="toggleSearch()">
+              <img src="assets/Buscar.svg" alt="buscar" />
+            </button>
+            <input 
+              type="text"
+              placeholder="Pesquisar"
+              class="search-input"
+            />
+          </div>
+          <button class="icon-btn cart-btn">
+            <img src="assets/sacola.svg" alt="sacola" />
+            <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+          </button>
+          <button class="icon-btn profile-btn">
+            <img src="assets/profile.svg" alt="perfil" />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-detail-main">
+      <div class="breadcrumb">
+        <span (click)="goHome()" class="breadcrumb-link">Página Inicial</span>
+        <span class="separator">/</span>
+        <span>Bolsas</span>
+        <span class="separator">/</span>
+        <span class="current">{{ product?.name }}</span>
+      </div>
+
+      <div class="product-container" *ngIf="product">
+        <div class="product-gallery">
+          <div class="thumbnails">
+            <div 
+              *ngFor="let image of product.images; let i = index"
+              class="thumbnail"
+              [class.active]="selectedImage === image"
+              (click)="selectImage(image)"
+            >
+              <img [src]="image" [alt]="'Thumbnail ' + (i + 1)" />
+            </div>
+          </div>
+
+          <div class="main-image" (click)="toggleZoom($event)"
+                (mousemove)="moveZoom($event)">
+            <img [src]="selectedImage" [alt]="product.name" [class.zoomed]="zoomActive"
+                    [style.transform]="zoomTransform"/>
+          </div>
+        </div>
+
+        <div class="product-details">
+          <h1 class="product-title">{{ product.name }}</h1>
+          
+          <p class="product-category">{{ product.category }}</p>
+          
+          <p class="product-price">R$ {{ product.price.toFixed(2).replace('.', ',') }}</p>
+
+          <div class="newsletter-box">
+            <p class="newsletter-text">
+              <span class="highlight">Coloque o e-mail para receber novidades dos produtos. 
+              Vovó Crochê  
+              e <b>ganhe 5% de desconto</b> com o cupom <b>PRIMEIRACOMPRA</b>. </span>
+              <a href="#" class="discount-link">Receber desconto</a>
+            </p>
+          </div>
+
+          <a href="#" class="table-link">Tabela de medidas</a>
+
+          <div class="action-section">
+            <button class="add-to-cart-btn" (click)="addToCart()">
+              Adicionar à Sacola
+            </button>
+            <img src="assets/check.svg" alt="check" class="stock-icon">
+            <span class="in-stock">Em estoque</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-description" *ngIf="product">
+        <h2>Descrição</h2>
+        <p>{{ product.description }}</p>
+      </div>
+    </main>
+
+    <footer class="footer" [class.hide-footer]="menuOpen">
+      <div class="footer-keywords marquee" #marqueeRef>
+        <span>crochê</span>
+        <span class="separator">*</span>
+        <span>netinho</span>
+        <span class="separator">*</span>
+        <span>café</span>
+        <span class="separator">*</span>
+        <span>amor</span>
+        <span class="separator">*</span>
+        <span>bolo</span>
+        <span class="separator">*</span>
+        <span>beijo</span>
+        <span class="separator">*</span>
+        <span>carinho</span>
+      </div>
+    </footer>
+  </div>
+</body>
