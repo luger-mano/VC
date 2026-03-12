@@ -13,7 +13,6 @@
           <li>ROUPAS <span>•</span></li>
           <li>ACESSÓRIOS <span>•</span></li>
           <li>ESTILOS <span>•</span></li>
-          <li>FAVORITOS <span>•</span></li>
         </ul>
 
         <div class="menu-footer">
@@ -38,9 +37,11 @@
             <img src="assets/menu_hamburguer.svg" alt="menu" />
           </button>
           <nav class="vc-nav">
-            <a href="#" (click)="goHome(); $event.preventDefault()">Destaque</a>
-            <a href="#">Encomendar</a>
-            <a href="#">Sobre Nós</a>
+            <a href="#destaque">Destaque</a>
+            <a href="#destaque">Masculino</a>
+            <a href="#destaque">Feminino</a>
+            <a href="#destaque">Infantil</a>
+            <a href="#encomendar">Encomendar</a>
           </nav>
         </div>
         <div class="vc-right">
@@ -48,11 +49,7 @@
             <button class="icon-btn search-btn" (click)="toggleSearch()">
               <img src="assets/Buscar.svg" alt="buscar" />
             </button>
-            <input 
-              type="text"
-              placeholder="Pesquisar"
-              class="search-input"
-            />
+            <input type="text" placeholder="Buscar" class="search-input" />
           </div>
           <button class="icon-btn cart-btn">
             <img src="assets/sacola.svg" alt="sacola" />
@@ -65,35 +62,36 @@
     </header>
 
     <main class="landing receber-novidades-main">
+      <div class="breadcrumb">
+        <span (click)="goHome()" class="breadcrumb-link">Página Inicial</span>
+        <span class="separator">/</span>
+        <span class="current">Receber Novidades</span>
+      </div>
+
       <div class="landing-inner">
         <section class="novidades-section">
           <div class="novidades-content">
             <div class="headline-row">
 
-                <h1 class="title">RECEBER</h1>
+              <h1 class="title">RECEBER</h1>
 
-                    <div class="image-container">
-                        <img src="assets/bolsa_vinho.svg" alt="Bolsa vinho" class="bag-image" />
-                    </div>
+              <div class="image-container">
+                <img src="assets/bolsa_vinho.svg" alt="Bolsa vinho" class="bag-image" />
+              </div>
 
-                <h2 class="subtitle">NOVIDADES</h2>
+              <h2 class="subtitle">NOVIDADES</h2>
 
             </div>
-            
+
             <p class="description">
-              Seja o primeiro a conhecer nossas criações mais recentes. 
-              Inscreva-se para receber novidades exclusivas, dicas de estilo 
+              Seja o primeiro a conhecer nossas criações mais recentes.
+              Inscreva-se para receber novidades exclusivas, dicas de estilo
               e promoções direto na sua caixa de entrada.
             </p>
 
             <form class="newsletter-form" (ngSubmit)="submitNewsletter($event)">
               <div class="input-group">
-                <input 
-                  type="email" 
-                  placeholder="Seu e-mail" 
-                  required
-                  class="email-input"
-                />
+                <input type="email" placeholder="Seu e-mail" required class="email-input" />
                 <button type="submit" class="subscribe-btn">
                   INSCREVER <span class="arrow">→</span>
                 </button>
@@ -101,7 +99,7 @@
             </form>
 
             <p class="terms">
-              Você receberá atualizações de novos produtos, tendências e ofertas exclusivas. 
+              Você receberá atualizações de novos produtos, tendências e ofertas exclusivas.
               Pode cancelar sua inscrição a qualquer momento.
             </p>
           </div>

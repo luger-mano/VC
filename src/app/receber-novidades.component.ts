@@ -1,6 +1,7 @@
 import { Component, HostListener, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Product } from './products';
 
 @Component({
   selector: 'app-receber-novidades',
@@ -59,7 +60,7 @@ export class ReceberNovidadesComponent implements AfterViewInit {
     this.menuOpen = false;
     document.body.style.overflow = 'auto';
   }
-
+  
   goHome() {
     this.router.navigate(['/home']);
   }
