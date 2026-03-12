@@ -13,7 +13,6 @@
           <li>ROUPAS <span>•</span></li>
           <li>ACESSÓRIOS <span>•</span></li>
           <li>ESTILOS <span>•</span></li>
-          <li>FAVORITOS <span>•</span></li>
         </ul>
 
         <div class="menu-footer">
@@ -38,9 +37,11 @@
             <img src="assets/menu_hamburguer.svg" alt="menu" />
           </button>
           <nav class="vc-nav">
-            <a href="#" (click)="goHome(); $event.preventDefault()">Destaque</a>
-            <a href="#">Encomendar</a>
-            <a href="#">Sobre Nós</a>
+            <a href="#destaque">Destaque</a>
+            <a href="#destaque">Masculino</a>
+            <a href="#destaque">Feminino</a>
+            <a href="#destaque">Infantil</a>
+            <a href="#encomendar">Encomendar</a>
           </nav>
         </div>
         <div class="vc-right">
@@ -48,11 +49,7 @@
             <button class="icon-btn search-btn" (click)="toggleSearch()">
               <img src="assets/Buscar.svg" alt="buscar" />
             </button>
-            <input 
-              type="text"
-              placeholder="Pesquisar"
-              class="search-input"
-            />
+            <input type="text" placeholder="Buscar" class="search-input" />
           </div>
           <button class="icon-btn cart-btn">
             <img src="assets/sacola.svg" alt="sacola" />
@@ -77,34 +74,29 @@
       <div class="product-container" *ngIf="product">
         <div class="product-gallery">
           <div class="thumbnails">
-            <div 
-              *ngFor="let image of product.images; let i = index"
-              class="thumbnail"
-              [class.active]="selectedImage === image"
-              (click)="selectImage(image)"
-            >
+            <div *ngFor="let image of product.images; let i = index" class="thumbnail"
+              [class.active]="selectedImage === image" (click)="selectImage(image)">
               <img [src]="image" [alt]="'Thumbnail ' + (i + 1)" />
             </div>
           </div>
 
-          <div class="main-image" (click)="toggleZoom($event)"
-                (mousemove)="moveZoom($event)">
+          <div class="main-image" (click)="toggleZoom($event)" (mousemove)="moveZoom($event)">
             <img [src]="selectedImage" [alt]="product.name" [class.zoomed]="zoomActive"
-                    [style.transform]="zoomTransform"/>
+              [style.transform]="zoomTransform" />
           </div>
         </div>
         <div class="product-details">
           <h1 class="product-title">{{ product.name }}</h1>
-          
+
           <p class="product-category">{{ product.category }}</p>
-          
+
           <p class="product-price">R$ {{ product.price.toFixed(2).replace('.', ',') }}</p>
-        
+
           <div class="newsletter-box">
             <p class="newsletter-text">
-              <span class="highlight">Coloque o e-mail para receber novidades dos produtos. 
-              Vovó Crochê  
-              e <b>ganhe 5% de desconto</b> com o cupom <b>PRIMEIRACOMPRA</b>. </span>
+              <span class="highlight">Coloque o e-mail para receber novidades dos produtos.
+                Vovó Crochê
+                e <b>ganhe 5% de desconto</b> com o cupom <b>PRIMEIRACOMPRA</b>. </span>
               <a href="#" class="discount-link">Receber desconto</a>
             </p>
           </div>
@@ -121,28 +113,188 @@
         </div>
       </div>
 
-      <div class="product-description" *ngIf="product">
-        <h2>Descrição</h2>
-        <p>{{ product.description }}</p>
+      <div class="product-extra" *ngIf="product">
+
+        <div class="tabs">
+          <span class="tab" [class.active]="activeTab === 'delivery'" (click)="setTab('delivery')">
+            Entrega
+          </span>
+
+          <span class="tab" [class.active]="activeTab === 'description'" (click)="setTab('description')">
+            Descrição
+          </span>
+        </div>
+
+        <!-- ENTREGA -->
+        <div class="tab-content" *ngIf="activeTab === 'delivery'">
+
+          <div class="cep-box">
+            <input type="text" placeholder="Digite seu cep" class="cep-input" />
+
+            <span class="calculate-btn" (click)="calculateFreight()">
+              Calcular
+            </span>
+          </div>
+
+          <p class="unknown-cep">
+            Não sei meu CEP
+          </p>
+
+        </div>
+
+
+        <!-- DESCRIÇÃO -->
+        <div class="tab-content" *ngIf="activeTab === 'description'">
+          <p class="description-text">
+            {{ product.description }}
+          </p>
+        </div>
+
       </div>
     </main>
+    <section class="suggestions-section">
+      <h2 class="suggestions-title">Você também pode gostar</h2>
 
-    <footer class="footer" [class.hide-footer]="menuOpen">
-      <div class="footer-keywords marquee" #marqueeRef>
-        <span>crochê</span>
-        <span class="separator">*</span>
-        <span>netinho</span>
-        <span class="separator">*</span>
-        <span>café</span>
-        <span class="separator">*</span>
-        <span>amor</span>
-        <span class="separator">*</span>
-        <span>bolo</span>
-        <span class="separator">*</span>
-        <span>beijo</span>
-        <span class="separator">*</span>
-        <span>carinho</span>
+      <div class="products">
+
+
+        <!-- Produto 1 -->
+        <div class="product-card" (click)="goToProduct(6)" (dblclick)="likeProduct(0)">
+
+          <div class="product-image">
+
+            <img src="assets/bolsa_verde_escuro.svg" />
+            <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+              <img src="assets/add_product.svg" alt="Adicionar">
+            </button>
+
+            <div class="heart" [class.show]="likedIndex === 0">
+              <img src="assets/heart.svg">
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <h3>Bolsinha laranja</h3>
+            <p class="category">Franjinha</p>
+            <p class="price">R$ 64<span class="cents">.99</span></p>
+          </div>
+
+        </div>
+
+
+        <!-- Produto 2 -->
+        <div class="product-card" (click)="goToProduct(4)" (dblclick)="likeProduct(1)">
+
+          <div class="product-image">
+
+            <img src="assets/bolsa_roxa.svg" />
+
+            <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+              <img src="assets/add_product.svg">
+            </button>
+
+            <div class="heart" [class.show]="likedIndex === 1">
+              <img src="assets/heart.svg">
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <h3>Bolsinha amarela</h3>
+            <p class="category">Franjinha</p>
+            <p class="price">R$ 64<span class="cents">.99</span></p>
+          </div>
+
+        </div>
+
+
+        <!-- Produto 3 -->
+        <div class="product-card" (click)="goToProduct(7)" (dblclick)="likeProduct(2)">
+
+          <div class="product-image">
+
+            <img src="assets/bolsa_vermelha.svg" />
+
+            <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+              <img src="assets/add_product.svg">
+            </button>
+
+            <div class="heart" [class.show]="likedIndex === 2">
+              <img src="assets/heart.svg">
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <h3>Bolsinha azul</h3>
+            <p class="category">Franjinha</p>
+            <p class="price">R$ 64<span class="cents">.99</span></p>
+          </div>
+
+        </div>
+
+
+        <!-- Produto 4 -->
+        <div class="product-card" (click)="goToProduct(5)" (dblclick)="likeProduct(3)">
+
+          <div class="product-image">
+
+            <img src="assets/bolsa_verde.svg" />
+
+            <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
+              <img src="assets/add_product.svg">
+            </button>
+
+            <div class="heart" [class.show]="likedIndex === 3">
+              <img src="assets/heart.svg">
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <h3>Bolsinha laranja</h3>
+            <p class="category">Franjinha</p>
+            <p class="price">R$ 64<span class="cents">.99</span></p>
+          </div>
+
+        </div>
+
       </div>
-    </footer>
+    </section>
+    <section class="final-footer">
+
+      <div class="footer-top">
+
+        <div class="footer-col">
+          <h4>COMPRAR</h4>
+          <a>Destacados</a>
+          <a routerLink="/receber-novidades">Novidades</a>
+          <a>Encomendar</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>AJUDA</h4>
+          <a>Entrega</a>
+          <a>Devolução e Troca</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>REDE</h4>
+          <a href="https://www.instagram.com/vovocrochet/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/ednea.correia" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+
+      </div>
+
+      <div class="footer-brand">
+        Vovó Crochê
+      </div>
+
+      <div class="footer-copy">
+        © 2025 Vovó Crochê
+      </div>
+
+    </section>
   </div>
 </body>

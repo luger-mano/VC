@@ -50,6 +50,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -73,15 +74,17 @@ body {
 }
 
 .vc-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 40px;
-    list-style: none;
 }
 
 .vc-nav a {
     text-decoration: none;
     color: #222;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -481,6 +484,228 @@ body {
     cursor: pointer;
 }
 
+/* Sugestões de produtos */
+
+.suggestions-section{
+  margin-top:80px;
+}
+
+.suggestions-title{
+  font-size:34px;
+  font-weight:600;
+  margin-bottom:40px;
+  color:#222;
+  padding: 0 50px;
+}
+
+/* usa o mesmo grid da home */
+
+.products{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:30px;
+  padding: 50px;
+}
+
+/* card */
+
+.product-card{
+  cursor:pointer;
+  transition:transform 0.3s ease;
+}
+
+.product-card:hover{
+  transform:translateY(-4px);
+}
+
+/* imagem */
+
+.product-image{
+  position:relative;
+  background:#dde0fc97;
+  border-radius:6px;
+  height:260px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.product-image img{
+  max-height:180px;
+  object-fit:contain;
+}
+
+/* botão adicionar */
+
+.add-cart-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+
+  border:none;
+  border-radius:50%;
+
+  width:34px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+}
+
+.add-cart-btn img{
+  width:16px;
+}
+
+/* coração */
+
+.heart{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  transform:scale(0.5);
+
+  transition:all 0.3s ease;
+}
+
+.heart img{
+  width:40px;
+}
+
+.heart.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* dica favoritar */
+
+.hint{
+  position:absolute;
+  bottom:10px;
+  left:12px;
+
+  font-size:11px;
+  color:#666;
+}
+
+/* info produto */
+
+.product-info{
+  margin-top:12px;
+}
+
+.product-info h3{
+  font-size:14px;
+  font-weight:600;
+}
+
+.category{
+  font-size:12px;
+  color:#777;
+  margin-top:3px;
+}
+
+.price{
+  font-size:14px;
+  font-weight:600;
+  margin-top:6px;
+}
+
+.cents{
+  font-size:11px;
+}
+
+.product-extra{
+  margin-top:40px;
+}
+
+/* abas */
+
+.tabs{
+  display:flex;
+  gap:60px;
+  margin-bottom:25px;
+}
+
+.tab{
+  font-size:16px;
+  color:#999;
+  cursor:pointer;
+  padding-bottom:10px;
+  position:relative;
+}
+
+.tab.active{
+  color:#222;
+  font-weight:500;
+}
+
+.tab.active::after{
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:#222;
+}
+
+/* conteúdo */
+
+.tab-content{
+  margin-top:10px;
+}
+
+/* campo CEP */
+
+.cep-box{
+  position:relative;
+  width:320px;
+}
+
+.cep-input{
+  width:100%;
+  padding:14px 90px 14px 14px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+.calculate-btn{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:13px;
+  color:#333;
+  cursor:pointer;
+}
+
+/* não sei cep */
+
+.unknown-cep{
+  margin-top:12px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+/* descrição */
+
+.description-text{
+  max-width:600px;
+  line-height:1.6;
+  color:#444;
+}
+
 /* Footer */
 .footer {
     bottom: 0;
@@ -512,6 +737,66 @@ body {
   position: relative;
   left: 0;
 }
+
+// Final Footer
+
+.final-footer{
+    background:#e9e9e9;
+    padding:120px 60px 40px 60px;
+    position:relative;
+}
+
+/* topo */
+
+.footer-top{
+    display:flex;
+    gap:120px;
+    margin-bottom:120px;
+}
+
+.footer-col{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-col h4{
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.footer-col a{
+    font-size:13px;
+    color:#777;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+
+/* marca gigante */
+
+.footer-brand{
+    font-size: 15vw;
+    font-weight: 800;
+    line-height: 0.9;
+    color: #1f1f1f;
+
+    white-space: nowrap;
+    width: 100%;
+
+    margin-left:-10px;
+    letter-spacing:-3px;
+    
+}
+/* copyright */
+
+.footer-copy{
+    text-align:center;
+    font-size:11px;
+    color:#666;
+    margin-top:30px;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

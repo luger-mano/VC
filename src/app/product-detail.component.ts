@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, ViewChildren, QueryList, ElementRef, A
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PRODUCTS, Product } from './products';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
@@ -23,7 +24,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private viewportScroller: ViewportScroller
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         this.selectedImage = this.product.image;
       }
     });
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   toggleSearch() {
@@ -93,6 +96,21 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   goToNovidades() {
     this.router.navigate(['/novidades']);
   }
+
+  likedIndex: number | null = null;
+
+  goToProduct(id: number) {
+    this.router.navigate(['/product-detail', id]);
+  }
+
+  likeProduct(index: number) {
+    this.likedIndex = index;
+
+    setTimeout(() => {
+      this.likedIndex = null;
+    }, 800);
+  }
+
   zoomActive = false;
   zoomTransform = 'scale(1) translate(0,0)';
   toggleZoom(event: MouseEvent) {
@@ -101,6 +119,15 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     if (!this.zoomActive) {
       this.zoomTransform = 'scale(1) translate(0,0)';
     }
+  }
+  activeTab: 'delivery' | 'description' = 'delivery';
+
+  setTab(tab: 'delivery' | 'description') {
+    this.activeTab = tab;
+  }
+
+  calculateFreight() {
+    console.log("Calcular frete futuramente");
   }
   moveZoom(event: MouseEvent) {
     if (!this.zoomActive) return;
