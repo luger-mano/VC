@@ -17,8 +17,9 @@ bootstrapApplication(AppLayoutComponent, {
       { path: 'novidades', component: ReceberNovidadesComponent },
       { path: 'receber-novidades', component: ReceberNovidadesComponent },
       { path: 'produto/:id', component: ProductDetailComponent },
+      {path: 'product-detail/:id', component: ProductDetailComponent},
       { path: '**', redirectTo: '' }
-      
+
     ])
   ]
 })
