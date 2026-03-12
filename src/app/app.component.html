@@ -13,7 +13,6 @@
                     <li>ROUPAS <span>•</span></li>
                     <li>ACESSÓRIOS <span>•</span></li>
                     <li>ESTILOS <span>•</span></li>
-                    <li>FAVORITOS <span>•</span></li>
                 </ul>
 
                 <div class="menu-footer">
@@ -39,8 +38,10 @@
                     </button>
                     <nav class="vc-nav">
                         <a href="#destaque">Destaque</a>
+                        <a href="#destaque">Masculino</a>
+                        <a href="#destaque">Feminino</a>
+                        <a href="#destaque">Infantil</a>
                         <a href="#encomendar">Encomendar</a>
-                        <a href="#sobre">Sobre Nós</a>
                     </nav>
                 </div>
                 <div class="vc-right">
@@ -50,11 +51,7 @@
                             <img src="assets/Buscar.svg" alt="buscar" />
                         </button>
 
-                        <input 
-                            type="text"
-                            placeholder="Pesquisar"
-                            class="search-input"
-                        />
+                        <input type="text" placeholder="Buscar" class="search-input" />
 
                     </div>
                     <button class="icon-btn cart-btn">
@@ -73,7 +70,7 @@
                     <h1 class="title">FEITO À MÃO</h1>
                     <h2 class="subtitle">COM AMOR &amp; CARINHO</h2>
                     <p class="lead">
-                        cada ponto carrega autenticidade, conforto e estilo — 
+                        cada ponto carrega autenticidade, conforto e estilo —
                         uma verdadeira joia para quem valoriza o feito à mão.
                     </p>
                     <button class="cta">
@@ -83,9 +80,7 @@
 
                 <section class="hero-image">
                     <div class="orange-bg"></div>
-                    <img src="assets/bolsa_laranja.png" 
-                         alt="Bolsa laranja feita à mão" 
-                         class="bag-img" />
+                    <img src="assets/bolsa_laranja.png" alt="Bolsa laranja feita à mão" class="bag-img" />
                 </section>
                 <!-- ================= DESTAQUE ================= -->
             </div>
@@ -119,18 +114,15 @@
             <div class="products">
 
                 <!-- Produto 1 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(0)"
-                    (click)="goToProduct(1)">
+                <div class="product-card" (dblclick)="likeProduct(0)" (click)="goToProduct(1)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_amarela.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 0">
+                        <div class="heart" [class.show]="likedIndex === 0">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -147,19 +139,16 @@
 
 
                 <!-- Produto 2 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(1)"
-                    (click)="goToProduct(2)">
+                <div class="product-card" (dblclick)="likeProduct(1)" (click)="goToProduct(2)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_azul.svg" />
 
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 1">
+                        <div class="heart" [class.show]="likedIndex === 1">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -174,19 +163,16 @@
 
 
                 <!-- Produto 3 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(2)"
-                    (click)="goToProduct(3)">
-                    
+                <div class="product-card" (dblclick)="likeProduct(2)" (click)="goToProduct(3)">
+
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_laranja_alca.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 2">
+                        <div class="heart" [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -199,18 +185,15 @@
                     </div>
                 </div>
                 <!-- Produto 4 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(3)"
-                    (click)="goToProduct(5)">
+                <div class="product-card" (dblclick)="likeProduct(3)" (click)="goToProduct(5)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_verde.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 2">
+                        <div class="heart" [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -253,9 +236,7 @@
                         <img src="assets/element_green.svg" alt="fundo decorativo">
                     </div>
 
-                    <img src="assets/bolsa_verde.svg"
-                        alt="Bolsa verde feita à mão"
-                        class="bag-img">
+                    <img src="assets/bolsa_verde.svg" alt="Bolsa verde feita à mão" class="bag-img">
                 </section>
 
                 <!-- TEXTO -->
@@ -267,8 +248,10 @@
                     <p class="product-price">R$ 79<span class="cents">.99</span> </p>
 
                     <p class="product-description">
-                        Feita com fios delicados e cuidadosamente trançados, encanta pelo seu tom verde sereno que transmite frescor e harmonia.
-                        Cada ponto revela o trabalho manual e o tempo dedicado à sua criação, resultando em um acessório leve, durável e cheio de personalidade.
+                        Feita com fios delicados e cuidadosamente trançados, encanta pelo seu tom verde sereno que
+                        transmite frescor e harmonia.
+                        Cada ponto revela o trabalho manual e o tempo dedicado à sua criação, resultando em um acessório
+                        leve, durável e cheio de personalidade.
                     </p>
 
                     <button class="cta-dark">
@@ -289,18 +272,15 @@
             <div class="products">
 
                 <!-- Produto 1 -->
-                <div class="product-card"
-                    (click)="goToProduct(6)"
-                    (dblclick)="likeProduct(3)">
+                <div class="product-card" (click)="goToProduct(6)" (dblclick)="likeProduct(3)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_verde_escuro.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 2">
+                        <div class="heart" [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -315,22 +295,19 @@
                 </div>
 
                 <!-- Produto 2 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(0)"
-                    (click)="goToProduct(4)">
+                <div class="product-card" (dblclick)="likeProduct(0)" (click)="goToProduct(4)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_roxa.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 0">
+                        <div class="heart" [class.show]="likedIndex === 0">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
-                        
+
 
                     </div>
 
@@ -341,19 +318,16 @@
                     </div>
                 </div>
                 <!-- Produto 3 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(2)"
-                    (click)="goToProduct(7)">
+                <div class="product-card" (dblclick)="likeProduct(2)" (click)="goToProduct(7)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_vermelha.svg" />
 
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 2">
+                        <div class="heart" [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -366,18 +340,15 @@
                     </div>
                 </div>
                 <!-- Produto 4 -->
-                <div class="product-card"
-                    (dblclick)="likeProduct(2)"
-                    (click)="goToProduct(5)">
+                <div class="product-card" (dblclick)="likeProduct(2)" (click)="goToProduct(5)">
 
                     <div class="product-image">
 
                         <img src="assets/bolsa_verde.svg" />
                         <button class="add-cart-btn" (click)="addToCart(); $event.stopPropagation()">
-                        <img src="assets/add_product.svg" alt="Adicionar">
+                            <img src="assets/add_product.svg" alt="Adicionar">
                         </button>
-                        <div class="heart"
-                            [class.show]="likedIndex === 2">
+                        <div class="heart" [class.show]="likedIndex === 2">
                             <img src="assets/heart.svg" alt="coração">
                         </div>
 
@@ -389,7 +360,7 @@
                         <p class="price">R$ 64<span class="cents">.99</span></p>
                     </div>
                 </div>
-                
+
 
             </div>
         </section>
@@ -412,11 +383,7 @@
         </footer>
         <section class="sustentavel" id="sobre">
 
-            <img 
-                src="assets/background-image-nature.svg"
-                alt="nature background"
-                class="sustentavel-bg"
-            />
+            <img src="assets/background-image-nature.svg" alt="nature background" class="sustentavel-bg" />
 
             <div class="sustentavel-overlay">
 
@@ -461,8 +428,10 @@
 
                 <div class="footer-col">
                     <h4>REDE</h4>
-                    <a href="https://www.instagram.com/vovocrochet/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://www.facebook.com/ednea.correia" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/vovocrochet/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/ednea.correia" target="_blank"
+                        rel="noopener noreferrer">Facebook</a>
                 </div>
 
             </div>
