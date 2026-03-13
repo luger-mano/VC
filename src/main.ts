@@ -6,6 +6,7 @@ import { AppComponent } from './app/app.component';
 import { ReceberNovidadesComponent } from './app/receber-novidades.component';
 import { AppLayoutComponent } from './app/app-layout.component';
 import { ProductDetailComponent } from './app/product-detail.component';
+import { ProductCategoryComponent } from './app/product-category.component';
 
 
 bootstrapApplication(AppLayoutComponent, {
@@ -17,7 +18,8 @@ bootstrapApplication(AppLayoutComponent, {
       { path: 'novidades', component: ReceberNovidadesComponent },
       { path: 'receber-novidades', component: ReceberNovidadesComponent },
       { path: 'produto/:id', component: ProductDetailComponent },
-      {path: 'product-detail/:id', component: ProductDetailComponent},
+      { path: 'category/:category', component: ProductCategoryComponent },
+      { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: '**', redirectTo: '' }
 
     ])
