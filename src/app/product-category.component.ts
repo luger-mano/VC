@@ -59,6 +59,18 @@ export class ProductCategoryComponent implements AfterViewInit {
         window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
+
+
+    toggleFilter() {
+        this.filterOpen = !this.filterOpen;
+        this.sortOpen = false;
+    }
+
+    toggleSort() {
+        this.sortOpen = !this.sortOpen;
+        this.filterOpen = false;
+    }
+
     toggleSearch() {
         this.searchOpen = !this.searchOpen;
     }
@@ -136,25 +148,6 @@ export class ProductCategoryComponent implements AfterViewInit {
             clearTimeout(this.clickTimeout);
         }
         product.favorite = !product.favorite;
-    }
-
-    openFilter() {
-        this.filterOpen = !this.filterOpen;
-        this.sortOpen = false; // close sort if open
-    }
-
-    closeFilter() {
-        this.filterOpen = false;
-    }
-
-    applyFilter() {
-        // Implement filter logic here
-        this.filterOpen = false;
-    }
-
-    openSort() {
-        this.sortOpen = !this.sortOpen;
-        this.filterOpen = false; // close filter if open
     }
 
     closeSort() {

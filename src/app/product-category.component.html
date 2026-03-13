@@ -34,24 +34,98 @@
 
             <div class="vc-header-inner">
                 <div class="vc-left">
-                    <img src="assets/logo.svg" alt="Vovó Crochê" class="vc-logo" (click)="goHome()" />
+                    <img src="assets/logo.svg" alt="Vovó Crochê" class="vc-logo" />
                     <button class="icon-btn menu-btn" (click)="openMenu()">
                         <img src="assets/menu_hamburguer.svg" alt="menu" />
                     </button>
                     <nav class="vc-nav">
-                        <a href="#destaque">Destaque</a>
-                        <a href="#destaque">Masculino</a>
-                        <a href="#destaque">Feminino</a>
-                        <a href="#destaque">Infantil</a>
-                        <a href="#encomendar">Encomendar</a>
+                        <!-- Destaque -->
+                        <div class="nav-item">
+                            <a href="#destaque">Destaque</a>
+
+                            <div class="mega-menu">
+                                <div class="mega-col">
+                                    <h4>Mais procurados</h4>
+                                    <a>Novidades</a>
+                                    <a>Mais vendidos</a>
+                                    <a routerLink="/category/promocoes">Promoções</a>
+                                </div>
+
+                                <div class="mega-col">
+                                    <h4>Categorias</h4>
+                                    <a>Bolsas</a>
+                                    <a>Roupas</a>
+                                    <a>Acessórios</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Masculino -->
+                        <div class="nav-item">
+                            <a>Masculino</a>
+
+                            <div class="mega-menu">
+                                <div class="mega-col">
+                                    <h4>Bolsas</h4>
+                                    <a>Transversal</a>
+                                    <a>Mochila</a>
+                                    <a>Carteira</a>
+                                </div>
+
+                                <div class="mega-col">
+                                    <h4>Roupas</h4>
+                                    <a>Casaco</a>
+                                    <a>Camiseta</a>
+                                    <a>Conjunto</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feminino -->
+                        <div class="nav-item">
+                            <a>Feminino</a>
+
+                            <div class="mega-menu">
+                                <div class="mega-col">
+                                    <h4>Bolsas</h4>
+                                    <a>Franjinha</a>
+                                    <a>Bolsa grande</a>
+                                    <a>Bolsa pequena</a>
+                                </div>
+
+                                <div class="mega-col">
+                                    <h4>Acessórios</h4>
+                                    <a>Tiara</a>
+                                    <a>Chaveiro</a>
+                                    <a>Carteira</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Infantil -->
+                        <div class="nav-item">
+                            <a>Infantil</a>
+
+                            <div class="mega-menu">
+                                <div class="mega-col">
+                                    <h4>Produtos</h4>
+                                    <a>Bolsa infantil</a>
+                                    <a>Gorro</a>
+                                    <a>Conjunto</a>
+                                </div>
+                            </div>
+                        </div>
                     </nav>
                 </div>
                 <div class="vc-right">
                     <div class="search-container" [class.open]="searchOpen">
+
                         <button class="icon-btn search-btn" (click)="toggleSearch()">
                             <img src="assets/Buscar.svg" alt="buscar" />
                         </button>
+
                         <input type="text" placeholder="Buscar" class="search-input" />
+
                     </div>
                     <button class="icon-btn cart-btn">
                         <img src="assets/sacola.svg" alt="sacola" />
@@ -67,77 +141,86 @@
         <main>
             <!-- category headline -->
             <section class="destaque" id="destaque">
-                <div class="destaque-header flex justify-between items-center">
-                    <div>
-                        <h1>{{ categoryTitle }} <span>({{ products.length }})</span></h1>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <button (click)="openFilter()"
-                            class="flex items-center gap-2 text-gray-700 hover:text-gray-900">
-                            <span>Filtro</span>
-                            <img src="assets/filter-icon.svg" alt="filter" class="w-5 h-5" />
-                        </button>
-                        <button (click)="openSort()" class="flex items-center gap-2 text-gray-700 hover:text-gray-900">
-                            <span>Mais relevantes</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Filter Panel -->
-                <div *ngIf="filterOpen"
-                    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-                    <div class="bg-white p-6 rounded-lg shadow-lg max-h-96 overflow-y-auto w-80">
-                        <h3 class="text-lg font-semibold mb-4">Filtros</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Categoria</label>
-                                <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    <option>Todas</option>
-                                    <option>Franjinha</option>
-                                    <option>Clássica</option>
-                                    <option>Natural</option>
-                                    <option>Premium</option>
-                                    <option>Especial</option>
-                                </select>
+                <div class="destaque-header">
+
+                    <h2>{{ categoryTitle }} <span>({{ products.length }})</span></h2>
+
+                    <div class="actions">
+
+                        <!-- FILTRO -->
+                        <div class="action-wrapper">
+                            <button (click)="toggleFilter()" class="action-btn">
+                                Filtros
+                                <img src="assets/filter-icon.svg">
+                            </button>
+
+                            <div class="filter-card" *ngIf="filterOpen">
+                                <h3 class="filter-title">Filtros</h3>
+
+                                <div class="filter-group">
+                                    <label>Categorias</label>
+                                    <select>
+                                        <option>Todas</option>
+                                        <option>Franjinha</option>
+                                        <option>Clássica</option>
+                                        <option>Natural</option>
+                                        <option>Premium</option>
+                                    </select>
+                                </div>
+
+                                <div class="filter-group">
+                                    <label>Valor</label>
+
+                                    <div class="price-range">
+                                        <span>R$ 80</span>
+                                        <span>R$ 230</span>
+                                    </div>
+
+                                    <input type="range" min="0" max="100">
+                                </div>
+
+                                <div class="filter-group">
+                                    <label>Cor</label>
+
+                                    <div class="colors">
+                                        <button class="color">Verde</button>
+                                        <button class="color">Verde</button>
+                                        <button class="color">Verde</button>
+                                        <button class="color">Verde</button>
+                                    </div>
+                                </div>
+
+                                <div class="filter-actions">
+                                    <button class="clear-btn">Limpar filtros</button>
+                                    <button class="apply-btn">Aplicar</button>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Preço Máximo</label>
-                                <input type="range" min="0" max="100" class="w-full">
+                        </div>
+
+                        <!-- ORDENAR -->
+                        <div class="action-wrapper">
+                            <button (click)="toggleSort()" class="action-btn">
+                                Ordenar por
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+
+                            <div class="sort-card" *ngIf="sortOpen">
+                                <button class="sort-option selected">Mais relevantes</button>
+                                <button class="sort-option">Maior preço</button>
+                                <button class="sort-option">Menor preço</button>
+                                <button class="sort-option">A-Z</button>
+                                <button class="sort-option">Z-A</button>
                             </div>
                         </div>
-                        <div class="mt-6 flex justify-end">
-                            <button (click)="closeFilter()" class="mr-2 px-4 py-2 bg-gray-300 rounded">Cancelar</button>
-                            <button (click)="applyFilter()"
-                                class="px-4 py-2 bg-orange-500 text-white rounded">Filtrar</button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Sort Panel -->
-                <div *ngIf="sortOpen"
-                    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-                    <div class="bg-white p-6 rounded-lg shadow-lg w-80">
-                        <h3 class="text-lg font-semibold mb-4">Ordenar por</h3>
-                        <div class="space-y-2">
-                            <button (click)="sortProducts('menor')"
-                                class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded">Menor preço</button>
-                            <button (click)="sortProducts('maior')"
-                                class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded">Maior preço</button>
-                            <button (click)="sortProducts('relevantes')"
-                                class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded">Mais relevantes</button>
-                        </div>
-                        <div class="mt-6 flex justify-end">
-                            <button (click)="closeSort()"
-                                class="px-4 py-2 bg-orange-500 text-white rounded">Filtrar</button>
-                        </div>
                     </div>
-                </div>
 
+                </div>
                 <div class="products">
+                    <!-- Produto 1 -->
                     <div class="product-card" *ngFor="let prod of products; let i = index" (dblclick)="likeProduct(i)"
                         (click)="goToProduct(prod.id)">
                         <div class="product-image">
@@ -158,24 +241,42 @@
                 </div>
             </section>
         </main>
+        <section class="final-footer">
 
-        <!-- footer copied from appliction -->
-        <footer class="footer" [class.hide-footer]="menuOpen">
-            <div class="footer-keywords marquee" #marqueeRef>
-                <span>crochê</span>
-                <span class="separator">*</span>
-                <span>netinho</span>
-                <span class="separator">*</span>
-                <span>café</span>
-                <span class="separator">*</span>
-                <span>amor</span>
-                <span class="separator">*</span>
-                <span>bolo</span>
-                <span class="separator">*</span>
-                <span>beijo</span>
-                <span class="separator">*</span>
-                <span>carinho</span>
+            <div class="footer-top">
+
+                <div class="footer-col">
+                    <h4>COMPRAR</h4>
+                    <a>Destacados</a>
+                    <a>Novidades</a>
+                    <a>Encomendar</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>AJUDA</h4>
+                    <a>Entrega</a>
+                    <a routerLink="/receber-novidades">Receber Novidades</a>
+                    <a>Devolução e Troca</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>REDE</h4>
+                    <a href="https://www.instagram.com/vovocrochet/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/ednea.correia" target="_blank"
+                        rel="noopener noreferrer">Facebook</a>
+                </div>
+
             </div>
-        </footer>
+
+            <div class="footer-brand">
+                Vovó Crochê
+            </div>
+
+            <div class="footer-copy">
+                © 2025 Vovó Crochê
+            </div>
+
+        </section>
     </div>
 </body>
