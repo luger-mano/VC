@@ -30,13 +30,18 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+
       const id = +params['id'];
+
       this.product = PRODUCTS.find(p => p.id === id) || null;
+
       if (this.product) {
         this.selectedImage = this.product.image;
       }
+
+      window.scrollTo({ top: 0, behavior: 'auto' });
+
     });
-    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   toggleSearch() {
