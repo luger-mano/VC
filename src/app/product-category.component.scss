@@ -1,0 +1,19 @@
+.destaque-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.destaque-header h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+/* layout tweaks: force four columns */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    flex: 0 0 calc(25% - 30px);
+}
