@@ -9,7 +9,8 @@
         </div>
 
         <ul class="menu-items">
-          <li>NOVIDADES <span>•</span></li>
+          <li (click)="goToNovidades(); closeMenu()">NOVIDADES <span>•</span></li>
+          <li (click)="router.navigate(['/category/promocoes']); closeMenu()">PROMOÇÕES <span>•</span></li>
           <li>ROUPAS <span>•</span></li>
           <li>ACESSÓRIOS <span>•</span></li>
           <li>ESTILOS <span>•</span></li>

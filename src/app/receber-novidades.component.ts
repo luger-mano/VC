@@ -17,7 +17,7 @@ export class ReceberNovidadesComponent implements AfterViewInit {
   lastScrollY = 0;
   menuOpen = false;
 
-  constructor(private router: Router, private elementRef: ElementRef) {}
+  constructor(public router: Router, private elementRef: ElementRef) {}
 
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
@@ -63,6 +63,10 @@ export class ReceberNovidadesComponent implements AfterViewInit {
   
   goHome() {
     this.router.navigate(['/home']);
+  }
+
+  goToNovidades() {
+    this.router.navigate(['/novidades']);
   }
 
   @ViewChildren('marqueeRef')
