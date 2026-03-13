@@ -18,7 +18,7 @@ export class AppComponent implements AfterViewInit{
   
   searchOpen = false;
 
-  constructor(private elementRef: ElementRef, private router: Router) {}
+  constructor(private elementRef: ElementRef, public router: Router) {}
 
   toggleSearch() {
     this.searchOpen = !this.searchOpen;

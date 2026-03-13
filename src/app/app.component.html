@@ -9,7 +9,8 @@
                 </div>
 
                 <ul class="menu-items">
-                    <li (click)="goToNovidades(); closeMenu()">NOVIDADES <span>•</span></li>
+                    <li (click)="router.navigate(['/category/novidades']); closeMenu()">NOVIDADES <span>•</span></li>
+                    <li (click)="router.navigate(['/category/promocoes']); closeMenu()">PROMOÇÕES <span>•</span></li>
                     <li>ROUPAS <span>•</span></li>
                     <li>ACESSÓRIOS <span>•</span></li>
                     <li>ESTILOS <span>•</span></li>
@@ -46,7 +47,7 @@
                                     <h4>Mais procurados</h4>
                                     <a>Novidades</a>
                                     <a>Mais vendidos</a>
-                                    <a>Promoções</a>
+                                    <a routerLink="/category/promocoes">Promoções</a>
                                 </div>
 
                                 <div class="mega-col">
@@ -490,7 +491,7 @@
                     <a>Novidades</a>
                     <a>Encomendar</a>
                 </div>
-                
+
                 <div class="footer-col">
                     <h4>AJUDA</h4>
                     <a>Entrega</a>
